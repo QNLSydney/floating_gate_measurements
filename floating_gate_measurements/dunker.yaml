@@ -1,0 +1,65 @@
+instruments:
+  # intrument name = identifier
+  # this is what is looked up by the add_instrument method of StationConfig
+
+  b2962:
+    driver: qcodes.instrument_drivers.Keysight_B2962A
+    type: B2962A
+    address: TCPIP::10.66.42.52::INSTR
+    # if true any existing connection will be closed when instatiated
+    # default (if left out) is false
+    auto_reconnect: true
+
+    add_parameters:
+      # Set up default parameters
+      VDD:
+        source: ch1.source_voltage
+        label: VDD Voltage
+        unit: V
+        monitor: true
+      VGATE:
+        source: ch2.source_voltage
+        label: Gate Voltage
+        unit: V
+        monitor: true
+
+  n6705b:
+    # class of the instrument
+    driver: qcodes.instrument_drivers.Keysight.Keysight_N6705B
+    type: N6705B
+    # visa address
+    address: TCPIP::10.66.42.14::INSTR
+    add_parameters:
+      VDRAIN:
+        source: ch1.source_voltage
+        label: Drain Voltage
+        unit: V
+        monitor: true
+      VBIAS:
+        source: ch2.source_voltage
+        label: Bias Voltage
+        unit: V
+        monitor: true
+      VBIAS:
+        source: ch2.source_voltage
+        label: Bias Voltage
+        unit: V
+        monitor: true
+      VBIAS:
+        source: ch2.source_voltage
+        label: Bias Voltage
+        unit: V
+        monitor: true
+    auto_reconnect: true
+
+  dmm:
+    driver: qcodes.instrument_drivers.Keysight.Keysight_34470A
+    type: Keysight_34470A
+    address: TCPIP::10.66.42.199::inst0::INSTR
+
+    add_parameters:
+      VOUT:
+        source: volt
+        label: Output voltage
+        unit: V
+
